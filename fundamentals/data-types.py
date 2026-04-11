@@ -9,5 +9,12 @@
 
 # math functions
 
-print(round(3.1))
-print (abs(-20))
+# print(round(3.1))
+# print (abs(-20))
+
+#bin() and complex
+# this print out the binary reprensentation of 5
+print (bin(5))
+print (int("0b101", 2))
+
+
