@@ -12,6 +12,7 @@
 
 username = input("username: ")
 password = input("password: ")
-user_password = password.replace( password[2], "****")
+password_length = len(password)
 
-print(f"welcome {username} your password is {user_password} ")
+print(type(password))
+print(f"welcome {username} your password is {password_length} letters long ")
