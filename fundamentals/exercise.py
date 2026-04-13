@@ -17,21 +17,57 @@
 
 #Cleaner version
 
-cart = [{
-    'name': 'shoes',
-    'price': 80,
-    'quantity': 1
-},
-{   'name': 'jacket',
-    'price': 50,
-    'quantity': 2
-}]
+# cart = [{
+#     'name': 'shoes',
+#     'price': 80,
+#     'quantity': 1
+# },
+# {   'name': 'jacket',
+#     'price': 50,
+#     'quantity': 2
+# }]
 
-total = 0
+# total = 0
 
-for item in cart:
-    total+= item['price'] * item['quantity']
-if total > 100:
-    print ('You have a discount')
+# for item in cart:
+#     total+= item['price'] * item['quantity']
+# if total > 100:
+#     print ('You have a discount')
+# else:
+#     print('cart not full')
+
+#----------------
+#friend access system
+#-----------------
+
+# user = {
+#     'name': 'Tom',
+#     'is_friend': False,
+#     'is_blocked': False
+# }
+
+# if user.get('is_blocked'):
+#     print('Access denied')
+
+# elif user.get('is_friend'):
+#     print('message allowed')
+# else:
+#     print('send a friend request') #👨‍🦯👨‍🦯 not bad
+
+
+#cleaner version...
+user = {
+    'name': 'Tom',
+    'is_friend': False,
+    'is_blocked': True
+}
+
+is_blocked = user.get('is_blocked')
+is_friend = user.get('is_friend')
+
+if is_blocked:
+    print ('Access Denied!')
+elif is_friend:
+    print ('Message Allowed')
 else:
-    print('cart not full')
+    print('send a friend request')
