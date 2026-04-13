@@ -56,18 +56,51 @@
 
 
 #cleaner version...
-user = {
-    'name': 'Tom',
-    'is_friend': False,
-    'is_blocked': True
-}
+# user = {
+#     'name': 'Tom',
+#     'is_friend': False,
+#     'is_blocked': True
+# }
 
-is_blocked = user.get('is_blocked')
-is_friend = user.get('is_friend')
+# is_blocked = user.get('is_blocked')
+# is_friend = user.get('is_friend')
 
-if is_blocked:
-    print ('Access Denied!')
-elif is_friend:
-    print ('Message Allowed')
+# if is_blocked:
+#     print ('Access Denied!')
+# elif is_friend:
+#     print ('Message Allowed')
+# else:
+#     print('send a friend request')
+
+#Inventory Checker
+# inventory =['laptops', 'phone', 'tablet']
+
+# if 'phone' in inventory:
+#     print('item available')
+# else:
+#     print('Out of stock')
+# inventory.append('headphones')
+# inventory.remove('tablet')
+# print(inventory) # ⛹🏻
+
+# #cleaner version...
+inventory =['laptops', 'phone', 'tablet']
+
+#---inventory checker----
+
+if 'phone' in inventory:
+    print('item available')
 else:
-    print('send a friend request')
+    print('item out of stock!')
+
+#----Add to inventory---
+inventory.append('headphones')
+
+#----Remove from inventory----
+if 'tablet' in inventory:
+    inventory.remove('tablet')
+print('Updated inventory:', inventory)
+
+
+
+
