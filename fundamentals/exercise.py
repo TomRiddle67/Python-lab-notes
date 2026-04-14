@@ -84,23 +84,50 @@
 # print(inventory) # ⛹🏻
 
 # #cleaner version...
-inventory =['laptops', 'phone', 'tablet']
+# inventory =['laptops', 'phone', 'tablet']
 
-#---inventory checker----
+# #---inventory checker----
 
-if 'phone' in inventory:
-    print('item available')
-else:
-    print('item out of stock!')
+# if 'phone' in inventory:
+#     print('item available')
+# else:
+#     print('item out of stock!')
 
-#----Add to inventory---
-inventory.append('headphones')
+# #----Add to inventory---
+# inventory.append('headphones')
 
-#----Remove from inventory----
-if 'tablet' in inventory:
-    inventory.remove('tablet')
-print('Updated inventory:', inventory)
+# #----Remove from inventory----
+# if 'tablet' in inventory:
+#     inventory.remove('tablet')
+# print('Updated inventory:', inventory)
+
+# is_magician = False
+# is_expert = True
+
+# if is_magician and is_expert:
+#     print('You are a master magician')
+# elif is_magician or is_expert:
+#     print('at least you are getting there')
+# else:
+#     print('you need magic powers')
 
 
+
+# for index in range(0,20):
+#     if index ==13:
+#         print(index)
+
+#-----Score checker----
+
+students = [
+    ('Tom', 85),
+    ('John', 40),
+    ('sarah', 72)
+]
+for name, score in students:
+    if score>= 70:
+        print(f'{name}: passed!')
+    else: print(f'{name}: failed!')
+    
 
 
