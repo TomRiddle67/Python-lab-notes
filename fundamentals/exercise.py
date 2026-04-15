@@ -1,14 +1,19 @@
-driver_name = input('Hello!, what is your name: ')
-age = int(input('What is your age: '))
+users = [
+    {"username": "tom", "password": "1234", "is_active": True},
+    {"username": "john", "password": "abcd", "is_active": False},
+]
 
+def login(username, password):
+    for user in users:
+        if user['username']== username:
+            if user['password'] != password:
+                return 'Incorrect Password'
+            if not user['is_active']:
+                return 'Account Disabled'
+            return 'login succesful'
+    return 'User not found'
+user_login = login('tim', '1234')
+print(user_login)
+        
 
-def check_driver_age(driver_name, age):
-    if age < 18:
-        return f'Hello {driver_name} you are to young to drive!'
-    elif age > 18:
-        return f'Hello {driver_name} powering on,Enjoy the ride!'
-    else:
-        return f'Hello {driver_name} congratulations on your first year of driving!'
-result = check_driver_age(driver_name, age)
-print(result)
 
