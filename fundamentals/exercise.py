@@ -1,19 +1,19 @@
-users = [
-    {"username": "tom", "password": "1234", "is_active": True},
-    {"username": "john", "password": "abcd", "is_active": False},
+order = [
+    {"item": "shirt", "price": 20, "quantity": 2},
+    {"item": "jeans", "price": 40, "quantity": 1}
 ]
 
-def login(username, password):
-    for user in users:
-        if user['username']== username:
-            if user['password'] != password:
-                return 'Incorrect Password'
-            if not user['is_active']:
-                return 'Account Disabled'
-            return 'login succesful'
-    return 'User not found'
-user_login = login('tim', '1234')
-print(user_login)
+def calculate_total(order, tax=0.5):
+    total= 0
+    for item in order:
+        total+= item['price'] * item['quantity']
         
+        #add tax
+        total_with_tax = total + (total * tax)
+    if total_with_tax > 100:
 
-
+        #apply discount
+        discount = total_with_tax * 0.10
+        total_with_tax -= discount
+    return total_with_tax
+print(calculate_total(order))
