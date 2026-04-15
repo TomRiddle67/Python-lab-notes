@@ -1,19 +1,22 @@
-order = [
-    {"item": "shirt", "price": 20, "quantity": 2},
-    {"item": "jeans", "price": 40, "quantity": 1}
-]
-
-def calculate_total(order, tax=0.5):
-    total= 0
-    for item in order:
-        total+= item['price'] * item['quantity']
+account = {
+    "name": "Tom",
+    "balance": 100,
+    "is_active": True
+}
+def bank_action(account,action,amount=0):
+    if not account['is_active']:
+        return 'Account is inactive'
+    if action == 'balance':
+        return account['balance']
+    if action == 'deposit':
+        account['balance'] += amount
+        return amount['balance']
+    if action == 'withdraw':
+        if amount > account['balance']:
+            return 'insufficent funds'
+        account['balance'] -= amount
+        return account['balance']
+    return 'invalid action'
+print(bank_action(account, 'withdraw', amount=80))
         
-        #add tax
-        total_with_tax = total + (total * tax)
-    if total_with_tax > 100:
-
-        #apply discount
-        discount = total_with_tax * 0.10
-        total_with_tax -= discount
-    return total_with_tax
-print(calculate_total(order))
+    
