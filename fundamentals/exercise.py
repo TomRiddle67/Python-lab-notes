@@ -11,11 +11,11 @@ Returns a dictionary containing:
 - division
 """
     '''
-    calculate_input = {
+    calculate_output = {
         'sum': a + b,
         'difference': a - b,
         'product': a * b,
         'division': a / b
     }
-    return calculate_input
+    return calculate_output
 result = calculator(10, 7.1)
