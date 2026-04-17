@@ -1,4 +1,4 @@
-def payment_risk_processor(**transactions: dict[str | float| int]):
+def payment_risk_processor(**transactions: dict[str | float| int]) -> dict[str, object]:
     """
      Processes a transaction and determines risk level and routing.
 
@@ -62,5 +62,65 @@ result = payment_risk_processor(
     payment_method = "card",
     country= "NG",
     card_age_days = 10)
-print(result)
+
+
+#E -commerce
+def inventory(**order) -> dict [str,str] | dict[str]:
+    """
+
+    """
+    if not order:
+        return {'error': 'No orders'}
     
+    items = order.get('items', [])
+    priority = order.get('priority', 'standard')
+
+    items_fullfiled: list[dict] = []
+    items_backorderd: list [dict] = []
+
+#core logic
+    for item in items:
+        if item ['stock'] >= item ['qty']:
+            items_fullfiled.append(item)
+        else:
+            items_backorderd.append(item)
+
+#logic path
+    if items and len(items_backorderd) == 0:
+        status = 'fullfiled'
+        warehouse_route = 'nearest'
+    elif items_fullfiled and items_backorderd:
+        status = 'partial'
+        warehouse_route = 'split'
+    else: 
+        status = 'delayed'
+        warehouse_route = 'backorder'
+    shipping_method = 'express' if priority == 'express' else 'standard'
+   
+
+
+
+    return {
+    "status": status,
+    "items_fulfilled": items_fullfiled,
+    "items_backordered": items_backorderd,
+    "shipping_method": shipping_method,
+    "warehouse_route": warehouse_route,
+    "api_response_ready": {
+        'order_id': order.get('order_id'),
+        'customer_loaction': order.get('customer_location'),
+        'status': status
+    }
+}
+    
+result = inventory(
+    order_id ="ORD8891",
+    items = [
+        {"sku": "SHOE123", "qty": 2, "stock": 10},
+        {"sku": "TSHIRT99", "qty": 1, "stock": 0}
+    ],
+    customer_location = "Lagos",
+    priority = "express"
+)
+
+print(result)
