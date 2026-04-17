@@ -1,8 +1,7 @@
 global_multiplier = 2
-
-def calculator(a:int, b:float, name: str) -> dict[str, float | str]:
+def calculator(a:int, b: float, name: str) -> dict[str, float | str | list[str]]:
     """
-    Performs arithmetic operations, scales numeric results,
+     Performs arithmetic operations, scales numeric results,
     and generates a personalized summary.
 
     Why this exists:
@@ -16,36 +15,52 @@ def calculator(a:int, b:float, name: str) -> dict[str, float | str]:
 
     Returns:
         dict[str, float | str]: Scaled results and a formatted summary
-
     """
     sum_val = a + b
-    difference_val = a - b
+    diff_val = a - b
     product_val = a * b
     division_val = a / b
-    
 
-    calculate_output = {
+    base_results = {
         'sum': sum_val,
-        'difference': difference_val,
+        'difference': diff_val,
         'product': product_val,
         'division': division_val
     }
 
-    scaled_output = {
-        key: value * global_multiplier 
-        for key, value in calculate_output.items()
+    scaled_results = {
+        key: value * global_multiplier
+        for key, value in base_results.items()
     }
+
     capitalized_name = name.capitalize()
     first_letter = name[0]
     name_length = len(name)
 
-    summary = (f"hello {capitalized_name}! {first_letter}"
+    summary = (f"hello {capitalized_name}! {first_letter} " 
               f"Your name has {name_length} letters."
-              f"sum is {scaled_output['sum']}, product is {scaled_output['product']}")
+              f" sum is {scaled_results['sum']}, product is {scaled_results['product']}")
 
-    scaled_output['summary'] = summary
+    history = [
+        f"{key}: {value}"
+        for key, value in scaled_results.items()
+    ]
 
-    return scaled_output
+    indexed_history = [
+        f"[{index + 1:02}] {value}"
+        for index, value in enumerate(history)
+    ] 
 
-result = calculator(20, 2.0, 'Tom Riddle')
+    status = 'High' if scaled_results['sum'] > 50 else 'Low'
+
+    
+    scaled_results['summary'] = summary
+    scaled_results['history'] = history
+    scaled_results['status'] = status
+    scaled_results['indexed_history'] = indexed_history
+
+
+    return scaled_results
+
+result = calculator(7, 1.1, 'tom Riddle')
 print(result)
