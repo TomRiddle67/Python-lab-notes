@@ -63,4 +63,38 @@ def calculator(a:int, b: float, name: str) -> dict[str, float | str | list[str]]
     return scaled_results
 
 result = calculator(7, 1.1, 'tom Riddle')
+
+
+def flexible_calculator(*numbers: float) -> dict[str, float]:
+    """
+    Performs aggregate calculations on a flexible number of inputs.
+
+    Why this exists:
+    Allows dynamic input handling for scenarios like analytics,
+    user-provided datasets, or API payloads without fixed parameters.
+
+    Args:
+        *numbers (float): Variable number of numeric inputs
+
+    Returns:
+        dict[str, float]: Summary statistics including sum, average, max, and min
+    """
+    if not numbers:
+        return {
+            'sum': 0.0,
+            'average': 0.0,
+            'max': 0.0,
+            'min': 0.0
+        }
+    total = sum(numbers)
+    average = total / 2
+
+    return {
+        'sum': total,
+        'average': average,
+        'max': max(numbers),
+        'min': min(numbers)
+
+    }
+result = flexible_calculator()
 print(result)
