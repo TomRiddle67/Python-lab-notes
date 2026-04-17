@@ -97,4 +97,34 @@ def flexible_calculator(*numbers: float) -> dict[str, float]:
 
     }
 result = flexible_calculator()
+
+
+def user_profile(**data: str) -> dict[str,str] :
+    """
+    Builds a dynamic user profile from flexible keyword inputs.
+
+    Why this exists:
+    Allows backend systems to accept and process user data dynamically,
+    similar to handling JSON payloads in APIs.
+
+    Args:
+        **data (str): Arbitrary user attributes (e.g., name, role, country)
+
+    Returns:
+        dict[str, str]: User data with a generated summary
+
+    """
+    if not data:
+        return{
+            'error': 'User not found'
+        }
+    name = data.get('name', 'Unknown')
+    role = data.get('role', 'Unknown')
+    country = data.get('country', 'Unknown')
+
+    summary = f"{name} is a {role} from {country}"
+    data['summary'] = summary
+    return data
+
+result = user_profile(name ='Snow',role = 'Software engineer', country = 'Nigeria' )
 print(result)
