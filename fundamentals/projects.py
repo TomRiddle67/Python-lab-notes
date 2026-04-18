@@ -11,3 +11,10 @@ def process_order(order: list[dict]) -> dict:
         if item['price'] < 0 and item['quantity'] < 0:
             return {'error': 'Invalid data'}
     total += item['price'] * item['quantity'] # Calculate total cost
+
+
+    #apply discount
+    discounted_price = False
+    if total > 100:
+        total += 0.09
+        discounted_price = True
