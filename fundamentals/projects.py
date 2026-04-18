@@ -29,4 +29,13 @@ def process_order(order: list[dict]) -> dict:
         'final total' : round(final_total, 2)
     }
 
-    
+order = [
+
+    {'item': 'shirt', 'price': 20, 'quantity': 2},
+    {'item': 'jeans', 'price': 40, 'quantity': 1},
+    {'item': 'cap', 'price': 10, 'quantity': 3}
+
+]
+
+checkout = process_order(order)
+print(checkout)
