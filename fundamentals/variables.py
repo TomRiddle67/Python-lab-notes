@@ -1,18 +1,36 @@
-# user_age = 40
-# user_name = "Tom"
+#oop
 
-# man, is_from, works_at = "Tom", "London", "KFC"
+class Car:
+    def __init__(self, brand, color = 'Unknown'):
+        self.brand = brand
+        self.color = color
 
-# # print(user_name, user_age)
-# print(man, is_from, works_at)
+    def honk(self):
+        print(f"{self.brand} is {self.color} and says Beep Beep!")
 
-# #statements and expressions
-# kids_age = (user_age // 2)
-# print (kids_age)
+    def describe(self):
+        print(f"{self.brand} is a {self.color} car ")
 
-username = input("username: ")
-password = input("password: ")
-password_length = len(password)
+    def __str__(self) :
+        return f"{self.brand} is a {self.color} car "
+    
+    def repaint(self, new_color):
+        self.color = new_color
+        return f" {self.brand} is now {self.color} car"
 
-print(type(password))
-print(f"welcome {username} your password is {password_length} letters long ")
+
+
+        
+
+first_car = Car('Toyota', 'Red')
+first_car.repaint('blue')
+second_car = Car('Honda')
+
+first_car.honk()
+first_car.describe()
+
+second_car.honk()
+second_car.describe()
+
+print(first_car)
+print(second_car)
