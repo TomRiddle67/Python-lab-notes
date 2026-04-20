@@ -1,4 +1,5 @@
 class Car:
+    
     def __init__(self, brand, color = 'Unknown'):
         self.brand = brand
         self.color = color
@@ -10,6 +11,7 @@ class Car:
         return f"{self.brand} is driving"
 
 class ParkingLot:
+
     def __init__(self):
         self.cars = []
 
@@ -34,6 +36,7 @@ class ParkingLot:
             return f"Cars in parking lot: {car}"
 
 class ElectricCar(Car):
+
     def __init__(self, brand, color, battery):
         super().__init__(brand, color)
         self.battery = battery
@@ -45,11 +48,24 @@ class ElectricCar(Car):
         return f"{self.brand} is driving silently"
 
 class GasCar(Car):
+
     def fuel_tank(self):
         return (f"{self.brand} is fueling ⛽️")
     
     def drive(self):
         return f"{self.brand} is driving with engine sound"
+
+class SportCar(Car):
+
+    def __init__(self, brand, color):
+        super().__init__(brand, color)
+        self._color = color
+
+    def set_color(self):
+        return self._color
+
+    def get_color(self, new_color):
+        self._color = new_color
 
 
 regular_car = Car('Toyota', 'Red')
