@@ -6,6 +6,9 @@ class Car:
     def __str__(self) :
         return f"{self.brand} is a {self.color} car "
 
+    def drive(self):
+        return f"{self.brand} is driving"
+
 class ParkingLot:
     def __init__(self):
         self.cars = []
@@ -13,22 +16,22 @@ class ParkingLot:
     def park_car(self, car):
         if len(self.cars) < 2:
             self.cars.append(car)
-            print(f"{car.brand} parked")
+            return f"{car.brand} parked"
         else:
-            print('Car park is full')
+            return 'Car park is full'
 
     def remove_car(self, brand):
         for car in self.cars:
             if car.brand == brand:
                 self.cars.remove(car)
-                print(f"{brand} has been removed.")
-                return
-        print ('car not found')
+                return f"{brand} has been removed."
+            else:
+                return 'car not found'
 
     def show_cars(self):
-        print("Cars in parking lot:")
+        
         for car in self.cars:
-            print(car)
+            return f"Cars in parking lot: {car}"
 
 class ElectricCar(Car):
     def __init__(self, brand, color, battery):
@@ -37,31 +40,40 @@ class ElectricCar(Car):
     
     def charge(self):
         return (f"{self.brand} is charging 🪫 {self.battery}%")
+    
+    def drive(self):
+        return f"{self.brand} is driving silently"
 
 class GasCar(Car):
     def fuel_tank(self):
         return (f"{self.brand} is fueling ⛽️")
+    
+    def drive(self):
+        return f"{self.brand} is driving with engine sound"
 
+
+regular_car = Car('Toyota', 'Red')
+print(regular_car.drive())
 
 gas_car = GasCar('Volvo', 'Green')
 print(gas_car)
+
 fuel_gas_car = gas_car.fuel_tank()
 print(fuel_gas_car)
+
 electric = ElectricCar('Tesla', 'White', 30)
 print (electric)
+
 charge = electric.charge()
 print(charge)
 
-    
+drive_electric = electric.drive()
+print(drive_electric)
+
+
 
 lot = ParkingLot()
-car1 = Car('Toyota', 'Red')
-car2 = Car('Honda', 'blue')
-car3 = Car('Benz', 'Black')
-
-lot.park_car(car1)
-lot.park_car(car2)
-lot.park_car(car3)
-
-lot.remove_car(car1.brand)
-lot.show_cars()
+print(lot.park_car(regular_car))
+print(lot.park_car(electric))
+print(lot.remove_car(regular_car.brand))
+print(lot.show_cars())
