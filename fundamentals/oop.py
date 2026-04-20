@@ -11,19 +11,35 @@ class ParkingLot:
         self.cars = []
 
     def park_car(self, car):
-        self.cars.append(car)
-        return f"{car.brand} parked sucessfully"
+        if len(self.cars) < 2:
+            self.cars.append(car)
+            print(f"{car.brand} parked")
+        else:
+            print('Car park is full')
+
+    def remove_car(self, brand):
+        for car in self.cars:
+            if car.brand == brand:
+                self.cars.remove(car)
+                print(f"{brand} has been removed.")
+                return
+        print ('car not found')
 
     def show_cars(self):
-        print('Cars in parking lot: ')
+        print("Cars in parking lot:")
         for car in self.cars:
-            return car
+            print(car)
+
+    
 
 lot = ParkingLot()
 car1 = Car('Toyota', 'Red')
-car2 = Car('Toyota', 'blue')
+car2 = Car('Honda', 'blue')
+car3 = Car('Benz', 'Black')
 
 lot.park_car(car1)
 lot.park_car(car2)
+lot.park_car(car3)
 
+lot.remove_car(car1.brand)
 lot.show_cars()
