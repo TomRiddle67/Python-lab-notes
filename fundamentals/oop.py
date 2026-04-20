@@ -30,6 +30,28 @@ class ParkingLot:
         for car in self.cars:
             print(car)
 
+class ElectricCar(Car):
+    def __init__(self, brand, color, battery):
+        super().__init__(brand, color)
+        self.battery = battery
+    
+    def charge(self):
+        return (f"{self.brand} is charging 🪫 {self.battery}%")
+
+class GasCar(Car):
+    def fuel_tank(self):
+        return (f"{self.brand} is fueling ⛽️")
+
+
+gas_car = GasCar('Volvo', 'Green')
+print(gas_car)
+fuel_gas_car = gas_car.fuel_tank()
+print(fuel_gas_car)
+electric = ElectricCar('Tesla', 'White', 30)
+print (electric)
+charge = electric.charge()
+print(charge)
+
     
 
 lot = ParkingLot()
