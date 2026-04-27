@@ -1,20 +1,14 @@
-# Guessing game
-from random import randint
+# Simple activity logger
+from pynput.keyboard import Controller as KeyboardController
+from pynput.mouse import Controller as MouseController
 
-def guess():
-    answer = randint(1,10)
 
-    while True:
-        try:
-            make_guess = int(input('To play 🎮🎮\n Guess a number between 1-10:  '))
-        except ValueError:
-            print( 'That is not a number! 🤷')
-            continue
+def control_mouse():
+    mouse = MouseController()
+    mouse.position = (500,200)
 
-        if make_guess == answer:
-            print(f"Cheers!! 🥂 \n You guessed the right number: {answer} 👏")
-            break
-        else:
-            print (f"You guessed wrongly! ❌ \nTry again 💪🏻")
-            
-guess()
+def control_keyboard():
+    keyboard = KeyboardController()
+    keyboard.type('it works')
+
+control_keyboard()
